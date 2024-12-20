@@ -1,0 +1,9 @@
+name: pythia
+services:
+  demo:
+    image: "nginx:latest" 
+    ports: 
+      - {{ API_PORT }}:{{ API_PORT_INTERNAL | default(80) }} 
+    volumes: 
+      - {{ LOCAL_FOLDER | default('./data') }}:/app/files
+    restart: unless-stopped
